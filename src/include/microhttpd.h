@@ -750,7 +750,6 @@ enum MHD_ConnectionInfoType
    * Get the 'struct MHD_Daemon' responsible for managing this connection.
    */
   MHD_CONNECTION_INFO_DAEMON
-
 };
 
 
@@ -781,6 +780,7 @@ enum MHD_DaemonInfoType
    * No extra arguments should be passed.
    */
   MHD_DAEMON_INFO_LISTEN_FD
+
 };
 
 
@@ -1616,6 +1616,27 @@ MHD_digest_auth_check (struct MHD_Connection *connection,
 		       const char *password,
 		       unsigned int nonce_timeout);
 
+
+
+/**
+ * Authenticates the authorization header sent by the client
+ *
+ * @param connection The MHD connection structure
+ * @param realm The realm presented to the client
+ * @param username The username needs to be authenticated
+ * @param ha1_in used in the authentication
+ * @param nonce_timeout The amount of time for a nonce to be
+ * 			invalid in seconds
+ * @return #MHD_YES if authenticated, #MHD_NO if not,
+ * 			#MHD_INVALID_NONCE if nonce is invalid
+ * @ingroup authentication
+ */
+int
+MHD_digest_auth_check_w_ha1 (struct MHD_Connection *connection,
+    	       const char *realm,
+		       const char *username,
+		       const unsigned char *ha1_in,
+		       unsigned int nonce_timeout);
 
 /**
  * Queues a response to request authentication from the client
