@@ -76,7 +76,7 @@ static const char *four_hundred[] = {
   "Length Required",
   "Precondition Failed",
   "Request Entity Too Large",
-  "Request-URI Too Large",
+  "Request-URI Too Long",
   "Unsupported Media Type",
   "Requested Range Not Satisfiable",
   "Expectation Failed",
